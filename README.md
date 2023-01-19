@@ -1,1 +1,4 @@
 # LBTC
+
+WGS pipeline
+
