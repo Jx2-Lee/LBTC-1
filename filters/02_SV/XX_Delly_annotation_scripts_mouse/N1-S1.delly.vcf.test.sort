@@ -1,0 +1,138 @@
+##fileformat=VCFv4.2
+##FILTER=<ID=PASS,Description="All filters passed">
+##fileDate=20221207
+##ALT=<ID=DEL,Description="Deletion">
+##ALT=<ID=DUP,Description="Duplication">
+##ALT=<ID=INV,Description="Inversion">
+##ALT=<ID=TRA,Description="Translocation">
+##ALT=<ID=INS,Description="Insertion">
+##FILTER=<ID=LowQual,Description="PE/SR support below 3 or mapping quality below 20.">
+##INFO=<ID=CIEND,Number=2,Type=Integer,Description="PE confidence interval around END">
+##INFO=<ID=CIPOS,Number=2,Type=Integer,Description="PE confidence interval around POS">
+##INFO=<ID=CHR2,Number=1,Type=String,Description="Chromosome for END coordinate in case of a translocation">
+##INFO=<ID=END,Number=1,Type=Integer,Description="End position of the structural variant">
+##INFO=<ID=PE,Number=1,Type=Integer,Description="Paired-end support of the structural variant">
+##INFO=<ID=MAPQ,Number=1,Type=Integer,Description="Median mapping quality of paired-ends">
+##INFO=<ID=SR,Number=1,Type=Integer,Description="Split-read support">
+##INFO=<ID=SRQ,Number=1,Type=Float,Description="Split-read consensus alignment quality">
+##INFO=<ID=CONSENSUS,Number=1,Type=String,Description="Split-read consensus sequence">
+##INFO=<ID=CE,Number=1,Type=Float,Description="Consensus sequence entropy">
+##INFO=<ID=CT,Number=1,Type=String,Description="Paired-end signature induced connection type">
+##INFO=<ID=IMPRECISE,Number=0,Type=Flag,Description="Imprecise structural variation">
+##INFO=<ID=PRECISE,Number=0,Type=Flag,Description="Precise structural variation">
+##INFO=<ID=SVTYPE,Number=1,Type=String,Description="Type of structural variant">
+##INFO=<ID=SVMETHOD,Number=1,Type=String,Description="Type of approach used to detect SV">
+##INFO=<ID=INSLEN,Number=1,Type=Integer,Description="Predicted length of the insertion">
+##INFO=<ID=HOMLEN,Number=1,Type=Integer,Description="Predicted microhomology length using a max. edit distance of 2">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=GL,Number=G,Type=Float,Description="Log10-scaled genotype likelihoods for RR,RA,AA genotypes">
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description="Genotype Quality">
+##FORMAT=<ID=FT,Number=1,Type=String,Description="Per-sample genotype filter">
+##FORMAT=<ID=RC,Number=1,Type=Integer,Description="Raw high-quality read counts for the SV">
+##FORMAT=<ID=RCL,Number=1,Type=Integer,Description="Raw high-quality read counts for the left control region">
+##FORMAT=<ID=RCR,Number=1,Type=Integer,Description="Raw high-quality read counts for the right control region">
+##FORMAT=<ID=CN,Number=1,Type=Integer,Description="Read-depth based copy-number estimate for autosomal sites">
+##FORMAT=<ID=DR,Number=1,Type=Integer,Description="# high-quality reference pairs">
+##FORMAT=<ID=DV,Number=1,Type=Integer,Description="# high-quality variant pairs">
+##FORMAT=<ID=RR,Number=1,Type=Integer,Description="# high-quality reference junction reads">
+##FORMAT=<ID=RV,Number=1,Type=Integer,Description="# high-quality variant junction reads">
+##reference=/home/mjkim/Ref.seq/GRCm38.p4.genome/GRCm38.p4.genome.fa
+##contig=<ID=chr1,length=195471971>
+##contig=<ID=chr2,length=182113224>
+##contig=<ID=chr3,length=160039680>
+##contig=<ID=chr4,length=156508116>
+##contig=<ID=chr5,length=151834684>
+##contig=<ID=chr6,length=149736546>
+##contig=<ID=chr7,length=145441459>
+##contig=<ID=chr8,length=129401213>
+##contig=<ID=chr9,length=124595110>
+##contig=<ID=chr10,length=130694993>
+##contig=<ID=chr11,length=122082543>
+##contig=<ID=chr12,length=120129022>
+##contig=<ID=chr13,length=120421639>
+##contig=<ID=chr14,length=124902244>
+##contig=<ID=chr15,length=104043685>
+##contig=<ID=chr16,length=98207768>
+##contig=<ID=chr17,length=94987271>
+##contig=<ID=chr18,length=90702639>
+##contig=<ID=chr19,length=61431566>
+##contig=<ID=chrX,length=171031299>
+##contig=<ID=chrY,length=91744698>
+##contig=<ID=chrM,length=16299>
+##contig=<ID=GL456210.1,length=169725>
+##contig=<ID=GL456211.1,length=241735>
+##contig=<ID=GL456212.1,length=153618>
+##contig=<ID=GL456213.1,length=39340>
+##contig=<ID=GL456216.1,length=66673>
+##contig=<ID=GL456219.1,length=175968>
+##contig=<ID=GL456221.1,length=206961>
+##contig=<ID=GL456233.1,length=336933>
+##contig=<ID=GL456239.1,length=40056>
+##contig=<ID=GL456350.1,length=227966>
+##contig=<ID=GL456354.1,length=195993>
+##contig=<ID=GL456359.1,length=22974>
+##contig=<ID=GL456360.1,length=31704>
+##contig=<ID=GL456366.1,length=47073>
+##contig=<ID=GL456367.1,length=42057>
+##contig=<ID=GL456368.1,length=20208>
+##contig=<ID=GL456370.1,length=26764>
+##contig=<ID=GL456372.1,length=28664>
+##contig=<ID=GL456378.1,length=31602>
+##contig=<ID=GL456379.1,length=72385>
+##contig=<ID=GL456381.1,length=25871>
+##contig=<ID=GL456382.1,length=23158>
+##contig=<ID=GL456383.1,length=38659>
+##contig=<ID=GL456385.1,length=35240>
+##contig=<ID=GL456387.1,length=24685>
+##contig=<ID=GL456389.1,length=28772>
+##contig=<ID=GL456390.1,length=24668>
+##contig=<ID=GL456392.1,length=23629>
+##contig=<ID=GL456393.1,length=55711>
+##contig=<ID=GL456394.1,length=24323>
+##contig=<ID=GL456396.1,length=21240>
+##contig=<ID=JH584292.1,length=14945>
+##contig=<ID=JH584293.1,length=207968>
+##contig=<ID=JH584294.1,length=191905>
+##contig=<ID=JH584295.1,length=1976>
+##contig=<ID=JH584296.1,length=199368>
+##contig=<ID=JH584297.1,length=205776>
+##contig=<ID=JH584298.1,length=184189>
+##contig=<ID=JH584299.1,length=953012>
+##contig=<ID=JH584300.1,length=182347>
+##contig=<ID=JH584301.1,length=259875>
+##contig=<ID=JH584302.1,length=155838>
+##contig=<ID=JH584303.1,length=158099>
+##contig=<ID=JH584304.1,length=114452>
+##contig=<ID=KQ030490.1,length=120154>
+##contig=<ID=KB469738.3,length=210641>
+##contig=<ID=JH792830.1,length=246751>
+##contig=<ID=KK082442.1,length=154766>
+##contig=<ID=KQ030495.1,length=490000>
+##contig=<ID=KQ030485.1,length=185548>
+##contig=<ID=KQ030486.1,length=399265>
+##contig=<ID=KQ030487.1,length=316842>
+##contig=<ID=KB469739.1,length=331111>
+##contig=<ID=KB469741.1,length=267241>
+##contig=<ID=JH792829.1,length=352455>
+##contig=<ID=JH792826.1,length=368286>
+##contig=<ID=JH792828.1,length=473738>
+##contig=<ID=KB469740.1,length=316140>
+##contig=<ID=JH792832.1,length=544189>
+##contig=<ID=JH792833.1,length=221588>
+##contig=<ID=JH792827.1,length=205713>
+##contig=<ID=JH792834.1,length=331480>
+##contig=<ID=JH792831.1,length=182256>
+##contig=<ID=KB469742.1,length=1059955>
+##contig=<ID=KQ030484.1,length=214957>
+##contig=<ID=KQ030494.1,length=506812>
+##contig=<ID=KQ030496.1,length=260447>
+##contig=<ID=KQ030497.1,length=219721>
+##contig=<ID=KQ030492.1,length=166012>
+##contig=<ID=KQ030493.1,length=269476>
+##contig=<ID=KQ030491.1,length=129865>
+##contig=<ID=KQ030488.1,length=45901>
+##contig=<ID=KQ030489.1,length=188269>
+##contig=<ID=KK082441.1,length=456798>
+##bcftools_concatVersion=1.3.1+htslib-1.3.1
+##bcftools_concatCommand=concat -a -O v -o N1-S1.delly.vcf N1-S1.DEL.bcf N1-S1.DUP.bcf N1-S1.INS.bcf N1-S1.INV.bcf N1-S1.TRA.bcf
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	N1-S1	N1-spleen
