@@ -8,6 +8,16 @@
 
 
 ## Methods
-### 1. Create Bam file
+### 1. Create Bam file        
+[bamprocessing_script](https://github.com/mjkim23/LBTC/blob/d23506ae899132f94edd8ba2d18ba0ec4b0527f9/2023_exercise/00_script_bamprocessing.sh)
 ### 2. Variant Calling
+#### Strelka2
+[strelka2_script](https://github.com/mjkim23/LBTC/blob/d23506ae899132f94edd8ba2d18ba0ec4b0527f9/2023_exercise/00_script_strelka.sh)
+#### VarScan2
+[mpileup_script](https://github.com/mjkim23/LBTC/blob/d23506ae899132f94edd8ba2d18ba0ec4b0527f9/2023_exercise/00_script_mpileup.sh)      
+[varscan2_script](https://github.com/mjkim23/LBTC/blob/d23506ae899132f94edd8ba2d18ba0ec4b0527f9/2023_exercise/00_script_varscan.sh)
+#### Delly
+[delly_script](https://github.com/mjkim23/LBTC/blob/d23506ae899132f94edd8ba2d18ba0ec4b0527f9/2023_exercise/00_script_delly_mouse.sh)  
+#### Sequenza2
+
 ### 3. Filtering
