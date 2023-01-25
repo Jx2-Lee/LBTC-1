@@ -15,6 +15,7 @@
 [download_picard](https://broadinstitute.github.io/picard/)     
 
 [bamprocessing_script](https://github.com/mjkim23/LBTC/blob/d23506ae899132f94edd8ba2d18ba0ec4b0527f9/2023_exercise/00_script_bamprocessing.sh)
+
 ### 2. Variant Calling
 #### Strelka2
 [download_strelka2](https://github.com/Illumina/strelka/blob/v2.9.x/docs/userGuide/quickStart.md)    
@@ -26,4 +27,7 @@
 [delly_script](https://github.com/mjkim23/LBTC/blob/d23506ae899132f94edd8ba2d18ba0ec4b0527f9/2023_exercise/00_script_delly_mouse.sh)  
 #### Sequenza2
 [download_sequenza](https://cran.r-project.org/web/packages/sequenza/vignettes/sequenza.html#about)
+#### Mutect2
+picard로 reference의 dict file 생성 → gatk 사용
+
 ### 3. Filtering
