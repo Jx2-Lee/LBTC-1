@@ -29,14 +29,9 @@ echo $1 $2 $3 $4 $5 > $log
 echo varscan somatic filtering >> $log
 (python /home/mjkim/mjkim_universal_filter/01_universe_filter/00_varscan_somaticfilter_mj.py $7/06_VarScan2/$1.varscan.$2.vcf) &>> $log || { c=$?;echo "Error";exit $c; }
 echo done >> $log
-#echo unzip vcf.gz file >>$log
-#(gzip -dc $7/03_strelka2/$1/results/variants/somatic."$temp_mttype"s.vcf.gz > /home/mjkim/temp/somatic."$temp_mttype"s.vcf) &>> $log || { c=$?;echo "Error";exit $c; }
-#echo "done" >>$log
-#gz 압축해제 안하면 byte형식 때문에 에러났음
 echo "start: union of pass call in varscan2 somatic & strelka2" >>$log
 (python /home/mjkim/mjkim_universal_filter/01_universe_filter/00_vcf_combination_by_Youk_$2_mj.py $1 $species 2 $7/03_strelka2/$1/results/variants/somatic."$temp_mttype"s.vcf.gz $7/06_VarScan2/$1.varscan.$2.somatic.vcf) &>> $log || { c=$?;echo "Error";exit $c; }
 echo "done" >>$log
-#rm /home/mjkim/temp/somatic."$temp_mttype"s.vcf
 echo "initial annotation" >> $log
 (sh /home/mjkim/mjkim_universal_filter/01_universe_filter/sypark_PointMt_annot_filter/PointMt_annot_mj.sh $1_$2_union_2.vcf $4 $5 /home/mjkim/mjkim_universal_filter/01_universe_filter/sypark_PointMt_annot_filter/src $3) &>> $log || { c=$?;echo "Error";exit $c; }
 echo "done" >>$log
