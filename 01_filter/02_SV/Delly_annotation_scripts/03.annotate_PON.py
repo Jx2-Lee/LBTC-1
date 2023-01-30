@@ -26,7 +26,7 @@ for chrom in size_dic.keys():
         
 if sys.argv[2][-3:]=='.gz':
 	ref_file=gzip.open(sys.argv[2], mode='rt')
-    #수정: mode='rt'
+    	#수정: mode='rt'
 else:
 	ref_file=open(sys.argv[2])
 ref_line=ref_file.readline().strip()
@@ -36,7 +36,6 @@ while ref_line:
 	else:
 		ref_indi=ref_line.split('\t')
 		chr1=ref_indi[0]
-		print(chr1)
 		pos1=int(ref_indi[1])
 		chr2=(ref_indi[7].split(';CHR2=')[1]).split(';')[0]
 		pos2=int((ref_indi[7].split(';END=')[1]).split(';')[0])
@@ -44,8 +43,9 @@ while ref_line:
 		dv=int(ref_indi[9].split(':')[9])
 		rv=int(ref_indi[9].split(':')[11])
 		s_name=ref_indi[10]
-		#수정 전: ref_dic[chr1][pos1/bin_size].append([chr1,pos1,ctinfo,chr2,pos2,dv+rv,s_name])
-		ref_dic[chr1][pos1//bin_size].append([chr1,pos1,ctinfo,chr2,pos2,dv+rv,s_name])
+		if pos1//bin_size in ref_dic:
+			#수정 전: ref_dic[chr1][pos1/bin_size].append([chr1,pos1,ctinfo,chr2,pos2,dv+rv,s_name])
+			ref_dic[chr1][pos1//bin_size].append([chr1,pos1,ctinfo,chr2,pos2,dv+rv,s_name])
 	ref_line=ref_file.readline().strip()
 
 print('annotating..')

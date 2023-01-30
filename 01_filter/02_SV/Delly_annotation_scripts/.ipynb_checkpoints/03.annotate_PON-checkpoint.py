@@ -20,11 +20,13 @@ ref_dic={}
 for chrom in size_dic.keys():
 	chrom_size=size_dic[chrom]
 	ref_dic[chrom]={}
-	for i in range(0, chrom_size/bin_size+1):
+	for i in range(0, chrom_size//bin_size+1):
 		ref_dic[chrom][i]=[]
-
+#수정: chrom_size/bin_size+1 -> chrom_size//bin_size+1
+        
 if sys.argv[2][-3:]=='.gz':
-	ref_file=gzip.open(sys.argv[2])
+	ref_file=gzip.open(sys.argv[2], mode='rt')
+    #수정: mode='rt'
 else:
 	ref_file=open(sys.argv[2])
 ref_line=ref_file.readline().strip()
@@ -41,7 +43,8 @@ while ref_line:
 		dv=int(ref_indi[9].split(':')[9])
 		rv=int(ref_indi[9].split(':')[11])
 		s_name=ref_indi[10]
-		ref_dic[chr1][pos1/bin_size].append([chr1,pos1,ctinfo,chr2,pos2,dv+rv,s_name])
+		#수정 전: ref_dic[chr1][pos1/bin_size].append([chr1,pos1,ctinfo,chr2,pos2,dv+rv,s_name])
+		ref_dic[chr1][pos1//bin_size].append([chr1,pos1,ctinfo,chr2,pos2,dv+rv,s_name])
 	ref_line=ref_file.readline().strip()
 
 print('annotating..')
@@ -68,11 +71,14 @@ while in_line:
 		else:
 			distco=dist
 		if pos1%bin_size < distco and pos1 > bin_size:
-			target_list= ref_dic[chr1][(pos1/bin_size)-1]+ref_dic[chr1][pos1/bin_size]
+			#수정 전: target_list= ref_dic[chr1][(pos1/bin_size)-1]+ref_dic[chr1][pos1/bin_size]
+			target_list= ref_dic[chr1][(pos1//bin_size)-1]+ref_dic[chr1][pos1//bin_size]
 		elif (bin_size - pos1%bin_size) < distco and pos1 < size_dic[chr1]-bin_size:
-			target_list= ref_dic[chr1][pos1/bin_size]+ref_dic[chr1][(pos1/bin_size)+1]
+			#수정 전: target_list= ref_dic[chr1][pos1/bin_size]+ref_dic[chr1][(pos1/bin_size)+1]
+			target_list= ref_dic[chr1][pos1//bin_size]+ref_dic[chr1][(pos1//bin_size)+1]
 		else:
-			target_list= ref_dic[chr1][pos1/bin_size]
+			#수정 전:target_list= ref_dic[chr1][pos1/bin_size]
+			target_list= ref_dic[chr1][pos1//bin_size]
 		for [ref_chr1,ref_pos1,ref_ctinfo,ref_chr2,ref_pos2,rc,s_name] in target_list:
 			if chr1==ref_chr1:
 				if ctinfo == ref_ctinfo:

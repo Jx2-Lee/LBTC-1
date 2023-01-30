@@ -11,19 +11,15 @@ srcDir=$6
 reference=$7 # mm10 or hg19
 
 outDir=$(dirname $1)
-rawDIR="../../05_delly"
+rawDIR="../01_delly"
 log=$outDir/$1.SVprocessing.log
 
 # START
 echo $1 $3 $4 $5 > $log
-echo $1 $3 > $log
-
-if true; then
+if false; then
 echo "start SV annotation from bcf combine"
 (bcftools concat -a -O v -o $1.delly.vcf $rawDIR/$1.DEL.bcf $rawDIR/$1.DUP.bcf $rawDIR/$1.INS.bcf $rawDIR/$1.INV.bcf $rawDIR/$1.TRA.bcf) &>> $log || { c=$?;echo "Error";exit $c; }
 echo "done"
-fi
-
 echo "filter somatic"
 (python $srcDir/01.filter_somatic_delly.py $1.delly.vcf $tumor_col) &>> $log || { c=$?;echo "Error";exit $c; }
 echo "done"
@@ -32,7 +28,7 @@ echo "Starting:sorting"
 rm $1.delly.vcf.somatic
 echo "done"
 echo "Starting:annotate PON"
-(python $srcDir/03.annotate_PON.py $1.delly.vcf.somatic.sort $pon /home/mjkim/Ref.seq/human_g1k_v37/human_g1k_v37.fasta.fai) &>> $log || { c=$?;echo "Error";exit $c; }
+(python $srcDir/03.annotate_PON.py $1.delly.vcf.somatic.sort $pon $srcDir/$7.fa.fai) &>> $log || { c=$?;echo "Error";exit $c; }
 rm $1.delly.vcf.somatic.sort
 echo "done"
 echo "Starting:find BP"
@@ -60,9 +56,13 @@ echo "Starting:annotate mapq starting position variance"
 rm $1.delly.vcf.somatic.sort.pon.BPinfo.BPadj.SVvaf.bginfo.pnsc
 mv $1.delly.vcf.somatic.sort.pon.BPinfo.BPadj.SVvaf.bginfo.pnsc.mqpos $1.delly.vcf.somatic.annotated
 echo "All Done"
+fi
+
 echo "filter1 start"
-(python /home/mjkim/mjkim_universal_filter/02_SV/02_SV_filter1.py $1 ) &>> $log || { c=$?;echo "Error";exit $c; }
+(python /home/users/jhyouk/81_filter_test_LADC/13_SV/02_SV_filter1.py $1 ) &>> $log || { c=$?;echo "Error";exit $c; }
 echo "filter1 done"
 echo "06_invivo_column_Rearrange_afterfilter1"
-(python /home/mjkim/mjkim_universal_filter/02_SV/06_invivo_rearrange.py $1.delly.somatic.annotated.filter1.vcf) &>> $log || { c=$?;echo "Error";exit $c; }
+(python /home/users/jhyouk/81_filter_test_LADC/13_SV/06_invivo_rearrange.py $1.delly.somatic.annotated.filter1.vcf) &>> $log || { c=$?;echo "Error";exit $c; }
 echo "06 done"
+
+
