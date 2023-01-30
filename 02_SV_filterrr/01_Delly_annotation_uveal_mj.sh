@@ -9,6 +9,7 @@ normalBam=$4
 pon=$5
 srcDir=$6
 reference=$7 # mm10 or hg19
+fai=$8
 
 outDir=$(dirname $1)
 rawDIR="../../05_delly"
@@ -32,7 +33,7 @@ echo "Starting:sorting"
 rm $1.delly.vcf.somatic
 echo "done"
 echo "Starting:annotate PON"
-(python $srcDir/03.annotate_PON.py $1.delly.vcf.somatic.sort $pon /home/mjkim/Ref.seq/human_g1k_v37/human_g1k_v37.fasta.fai) &>> $log || { c=$?;echo "Error";exit $c; }
+(python $srcDir/03.annotate_PON.py $1.delly.vcf.somatic.sort $pon $srcDir/$8.fai) &>> $log || { c=$?;echo "Error";exit $c; }
 rm $1.delly.vcf.somatic.sort
 echo "done"
 echo "Starting:find BP"
